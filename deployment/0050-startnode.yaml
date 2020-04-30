@@ -26,11 +26,12 @@ spec:
         app: tezos-rpc
     spec:
       containers:
-      - image: tqtezos
-        imagePullPolicy: Never
+      - image: registry.gitlab.com/tezos/flextesa:01e3f596-run
+        imagePullPolicy: Always
         name: tezos-rpc
         command: ["/bin/sh", "-c"]
-        args: ["/opt/tezos/bin/tezos-node run --data-dir /var/tezos/node --rpc-addr localhost:8732 --net-addr localhost:8733 --no-bootstrap-peers --bootstrap-threshold 1"]
+        #args: ["OCAMLRUNPARAM=b /opt/tezos/bin/tezos-node run --config-file /etc/tezos/nodeconfig.json -vv --singleprocess"]
+        args: ["ls -la /var/tezos ; find /var/tezos /tmp/hostpath_pv/ ; cp /etc/tezos/nodeconfig.json  /var/tezos/ ; find /etc/tezos ; whoami ; echo hello > /var/tezos/hello ;  OCAMLRUNPARAM=b tezos-node run --config-file /etc/tezos/nodeconfig.json"]
         ports:
         - containerPort: 8732
           name: tezos-rpc

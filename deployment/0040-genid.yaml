@@ -8,9 +8,9 @@ spec:
     spec:
       containers:
       - name: genid
-        image: tqtezos
-        imagePullPolicy: Never
-        command: ["/opt/tezos/bin/tezos-node", "identity", "generate", "--data-dir", "/var/tezos/node", "--config-file", "/etc/tezos/nodeconfig.json"]
+        image: registry.gitlab.com/tezos/flextesa:01e3f596-run
+        imagePullPolicy: Always
+        command: ["tezos-node", "identity", "generate", "--data-dir", "/var/tezos/node", "--config-file", "/etc/tezos/nodeconfig.json"]
         volumeMounts:
         - name: config-volume
           mountPath: /etc/tezos

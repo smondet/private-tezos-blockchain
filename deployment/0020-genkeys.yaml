@@ -8,9 +8,9 @@ spec:
     spec:
       containers:
       - name: genkeys
-        image: tqtezos
-        imagePullPolicy: Never
-        command: ["/opt/tezos/bin/tezos-client", "-d", "/var/tezos/client", "--protocol", "PsCARTHAGazK", "gen", "keys", "genesis", "--force"]
+        image: registry.gitlab.com/tezos/flextesa:01e3f596-run
+        imagePullPolicy: Always
+        command: ["tezos-client", "-d", "/var/tezos/client", "--protocol", "PsCARTHAGazK", "gen", "keys", "genesis", "--force"]
         volumeMounts:
         - name: var-volume
           mountPath: /var/tezos
